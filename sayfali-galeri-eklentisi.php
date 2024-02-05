@@ -19,10 +19,12 @@ if ( ! defined( 'OFFERS_PLG_URL' ) ) {
 	define( 'OFFERS_PLG_URL', plugin_dir_url( __FILE__ ) );
 }
 function wptuts_add_color_picker($hook){
+	
 	global $post;
-    if( in_array($hook, array('post.php', 'post-new.php') ) ){
-        $screen = get_current_screen();
-        if( is_object( $screen ) && 'post' == $screen->post_type ){
+	
+    	if( in_array($hook, array('post.php', 'post-new.php') ) ){
+	        $screen = get_current_screen();
+	        if( is_object( $screen ) && 'post' == $screen->post_type ){
 			wp_enqueue_style( 'wp-color-picker' ); 
 			wp_enqueue_script( 'custom-script-handle', OFFERS_PLG_URL.'/assets/js/custom_admin.js', array( 'jquery', 'wp-color-picker' ), '1.0', true ); 
 		}
@@ -46,42 +48,41 @@ function galeri_ayarlari_callback(){
 	wp_nonce_field( basename(__FILE__), 'sample_nonce' );
 	global $post;
 	$metas = get_post_meta( $post->ID );
-	//print_r($metas);
 	$gallery_data = get_post_meta( $post->ID, 'gallery_data', true );
 	?>
-<style>
-li.tek_secenek {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 1.4em 0;
-    border-bottom: 1px solid #dbdbdb;
-}
-ul.galeri_ayarlari_list li:last-child {
-    border-bottom: 0;
-}
-.secenek_left {
-    width: 20%;
-}
-.secenek_right {
-    width: 75%;
-}
-.secenek_left span {
-    font-weight: bold;
-}
-.secenek_desc {
-    margin-top: 10px;
-}
-.secenek_options label {
-    display: block;
-    margin-bottom: 5px;
-}
-.secenek_options textarea {
-    width: 100%;
-    display: block;
-    height: 100px;
-}
-</style>
+	<style>
+	li.tek_secenek {
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: flex-start;
+	    padding: 1.4em 0;
+	    border-bottom: 1px solid #dbdbdb;
+	}
+	ul.galeri_ayarlari_list li:last-child {
+	    border-bottom: 0;
+	}
+	.secenek_left {
+	    width: 20%;
+	}
+	.secenek_right {
+	    width: 75%;
+	}
+	.secenek_left span {
+	    font-weight: bold;
+	}
+	.secenek_desc {
+	    margin-top: 10px;
+	}
+	.secenek_options label {
+	    display: block;
+	    margin-bottom: 5px;
+	}
+	.secenek_options textarea {
+	    width: 100%;
+	    display: block;
+	    height: 100px;
+	}
+	</style>
 	<ul class="galeri_ayarlari_list">
 		<li class="tek_secenek">
 			<div class="secenek_left">
